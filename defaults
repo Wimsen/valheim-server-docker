@@ -20,7 +20,7 @@ SERVER_PUBLIC=${SERVER_PUBLIC:-1}
 [ "$SERVER_PUBLIC" = false ] && SERVER_PUBLIC=0
 
 # steamcmd.sh arguments
-STEAMCMD_ARGS=${STEAMCMD_ARGS-validate}
+STEAMCMD_ARGS=${STEAMCMD_ARGS:-""}
 
 # Debug Flags
 # Flag to wipe all downloaded server data on startup (config is untouched)
