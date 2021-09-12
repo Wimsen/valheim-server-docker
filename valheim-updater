@@ -41,6 +41,11 @@ main() {
 
 update() {
     local logfile
+
+    if [ "$NEVER_UPDATE" = 1 ]; then
+        return
+    fi
+
     if ! is_idle; then
         return
     fi
