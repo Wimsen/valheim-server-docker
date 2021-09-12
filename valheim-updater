@@ -41,11 +41,7 @@ main() {
 
 update() {
     local logfile
-
-    if [ "$NEVER_UPDATE" = 1 ]; then
-        return
-    fi
-
+    
     if ! is_idle; then
         return
     fi
@@ -60,7 +56,7 @@ update() {
             return
         fi
     fi
-    rsync -a --itemize-changes --delete --exclude server_exit.drp --exclude steamapps "$valheim_download_path/" "$valheim_install_path" | tee "$logfile"
+    rsync -a --itemize-changes --delete --exclude server_exit.drp --exclude steamapps --exclude "valheim_server_Data/Managed/assembly_valheim.dll" "$valheim_download_path/" "$valheim_install_path" | tee "$logfile"
     if grep '^[*>]' "$logfile" > /dev/null 2>&1; then
         info "Valheim Server was updated - restarting"
         if ! check_mods updated; then
